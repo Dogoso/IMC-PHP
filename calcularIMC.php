@@ -30,3 +30,11 @@
     }
     print_r('<p>Ou seja: '. $resultado .'</p>');
     echo '</body></html>';
+
+    $filename = './IMC.csv';
+    if(file_exists($filename) != 1) {
+        $headers = 'Nome;Resultado IMC;';
+        file_put_contents($filename, $headers . PHP_EOL, FILE_APPEND);
+    }
+    $data = $nome . ';' . $resultado . ';';
+    file_put_contents($filename, $data . PHP_EOL, FILE_APPEND);
